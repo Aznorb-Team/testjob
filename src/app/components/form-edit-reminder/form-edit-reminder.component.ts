@@ -21,18 +21,21 @@ export class FormEditReminderComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Получаение данных о напоминаниях из сервиса
     this.dataHandler.reminderSubject.subscribe({
       next: (reminders: IReminder[]) =>
         this.dataReminder = reminders
     });
     this.dataHandler.fillReminder();
+    //Ищем выбранное для редактирования напоминание
     for (let i = 0; i < this.dataReminder.length; i++) {
       if (this.dataReminder[i].id == this.id)
         this.reminder = this.dataReminder[i];
     }
+    //Получаем данные о статусах
     this.dataSourceStatus = this.dataHandler.getStatus();
   }
-
+  //Функиця для перехода на таблицу с напоминаниями
   back() {
     this.router.navigate(
       ["table_reminder"]

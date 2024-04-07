@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { TableRowBindingComponent } from './components/table-row-binding/table-row-binding.component';
 import { FormEditReminderComponent } from './components/form-edit-reminder/form-edit-reminder.component';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -56,6 +56,4 @@ import { DataHandlerService } from './service/data-handler.service';
     ]
 })
 
-export class AppModule {
-    
- }
+export class AppModule { }

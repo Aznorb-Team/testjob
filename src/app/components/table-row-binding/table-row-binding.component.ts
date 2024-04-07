@@ -26,7 +26,7 @@ export class TableRowBindingComponent implements OnInit {
     this.dataHandler.fillReminder();
     this.dataSourceStatus = this.dataHandler.getStatus();
   }
-
+  //Программная навигация на компонент с формой для редактирования напоминания
   editReminder(id: number) {
     this.router.navigate(
       ["reminder/", id]

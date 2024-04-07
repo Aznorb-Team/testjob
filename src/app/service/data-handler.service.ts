@@ -14,19 +14,12 @@ export class DataHandlerService {
   constructor() {
 
   }
-
+  //Обновление данных
   fillReminder() {
     this.reminderSubject.next(data_reminder);
   }
-
-  getReminder(): IReminder[] {
-    return data_reminder;
-  }
+  //Получение данных о статусах
   getStatus(): IStatus[] {
     return status;
-  }
-  deleteReminder() {
-    data_reminder.splice(2, 1);
-    this.reminderSubject.next(data_reminder);
   }
 }
