@@ -55,4 +55,7 @@ import { DataHandlerService } from './service/data-handler.service';
         DataHandlerService
     ]
 })
-export class AppModule { }
+
+export class AppModule {
+    
+ }

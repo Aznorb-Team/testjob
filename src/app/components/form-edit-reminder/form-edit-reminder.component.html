@@ -1,5 +1,4 @@
 <div class="form">
-  <button mat-stroked-button (click)="back()">Назад</button>
   <div class="form_field">
     <mat-form-field>
       <mat-label>Дата создания</mat-label>
@@ -48,5 +47,6 @@
       <mat-label>Полное описание</mat-label>
       <textarea matInput [(ngModel)]="reminder.description"></textarea>
     </mat-form-field>
+    <button mat-raised-button (click)="back()">Назад</button>
   </div>
 </div>
