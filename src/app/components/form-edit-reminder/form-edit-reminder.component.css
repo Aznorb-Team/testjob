@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: auto;
+    margin: 50px;
+    padding: 50px;
+  }
+
+.form_field{
+    display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	height: auto;
+	background: #fff2e1;
+    padding: 75px;
+    margin: 25px;
+}

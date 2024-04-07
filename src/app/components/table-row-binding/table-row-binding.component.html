@@ -1,52 +1,32 @@
 <h4>Напоминания</h4>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-<!--     
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element">{{element.id}}</td>
-    </ng-container> -->
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Статус</th>
-      <td mat-cell *matCellDef="let element">{{dataSourceStatus[element.status-1].title}}</td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="short_description">
-      <th mat-header-cell *matHeaderCellDef>Короткое описание</th>
-      <td mat-cell *matCellDef="let element">{{element.short_description}}</td>
-    </ng-container>
-  
- 
-    <!-- <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Description</th>
-      <td mat-cell *matCellDef="let element">{{element.description}}</td>
-    </ng-container>
-   -->
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="data_created">
-      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
-      <td mat-cell *matCellDef="let element">{{element.data_created}}</td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="data_completed">
-      <th mat-header-cell *matHeaderCellDef>Дата завершения</th>
-      <td mat-cell *matCellDef="let element">{{element.data_completed}}</td>
-    </ng-container>
-
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-        mat-row
-        (click)="dialog.openDialog(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
-  </table>
-  
-  <dialog-overview #dialog></dialog-overview>
-  
-
-  <!--  (click)="dialog.openDialog(row)" -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Статус</th>
+    <td mat-cell *matCellDef="let element">
+      {{ dataSourceStatus[element.status - 1].title }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="short_description">
+    <th mat-header-cell *matHeaderCellDef>Короткое описание</th>
+    <td mat-cell *matCellDef="let element">{{ element.short_description }}</td>
+  </ng-container>
+  <ng-container matColumnDef="data_created">
+    <th mat-header-cell *matHeaderCellDef>Дата создания</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.data_created | date }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="data_completed">
+    <th mat-header-cell *matHeaderCellDef>Дата завершения</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.data_completed | date }}
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    (dblclick)="editReminder(row.id)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns"
+  ></tr>
+</table>

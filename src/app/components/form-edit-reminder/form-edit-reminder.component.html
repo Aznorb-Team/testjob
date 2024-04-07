@@ -1,0 +1,52 @@
+<div class="form">
+  <button mat-stroked-button (click)="back()">Назад</button>
+  <div class="form_field">
+    <mat-form-field>
+      <mat-label>Дата создания</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerStart"
+        disabled
+        [(ngModel)]="reminder.data_created"
+      />
+      <mat-hint>ММ/ДД/ГГГГ</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="pickerStart"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Дата завершения</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerEnd"
+        [(ngModel)]="reminder.data_completed"
+      />
+      <mat-hint>ММ/ДД/ГГГГ</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="pickerEnd"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Статус</mat-label>
+      <mat-select [(value)]="reminder.status">
+        @for (status of dataSourceStatus; track status) {
+        <mat-option [value]="status.id">{{ status.title }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form_field">
+    <mat-form-field>
+      <mat-label>Короткое описание</mat-label>
+      <input matInput [(ngModel)]="reminder.short_description" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Полное описание</mat-label>
+      <textarea matInput [(ngModel)]="reminder.description"></textarea>
+    </mat-form-field>
+  </div>
+</div>

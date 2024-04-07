@@ -1,8 +1,18 @@
-import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { DialogOverviewComponent } from './components/dialog-overview/dialog-overview.component';
+import { FormEditReminderComponent } from './components/form-edit-reminder/form-edit-reminder.component';
+import { TableRowBindingComponent } from './components/table-row-binding/table-row-binding.component';
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-    { path: "", component: AppComponent},
-    { path: "reminder/edit/:reminder", component: DialogOverviewComponent}
+    { path: "", redirectTo: 'table_reminder', pathMatch: 'full' },
+    { path: "table_reminder", component: TableRowBindingComponent },
+    { path: "reminder/:id", component: FormEditReminderComponent }
 ];
+
+// configures NgModule imports and exports
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
+})
+
+export class AppRouting { }

@@ -1,4 +1,4 @@
-import {IStatus} from '../models/status'
+import { IStatus } from '../models/status'
 
 export const status: IStatus[] = [
     {
@@ -16,10 +16,6 @@ export const status: IStatus[] = [
     {
         "id": 4,
         "title": "Просрочен"
-    },
-    {
-        "id": 5,
-        "title": "Новый"
     },
 
 ]

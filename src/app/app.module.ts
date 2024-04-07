@@ -1,27 +1,31 @@
-import { NgModule }      from "@angular/core";
-import { FormsModule }   from '@angular/forms';
-import {MatTableModule} from '@angular/material/table';
+import { NgModule } from "@angular/core";
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 import { TableRowBindingComponent } from './components/table-row-binding/table-row-binding.component';
-import { CommonModule } from '@angular/common'; 
-import { DialogOverviewComponent, DialogOverviewDialog } from "./components/dialog-overview/dialog-overview.component";
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormEditReminderComponent } from './components/form-edit-reminder/form-edit-reminder.component';
+import { CommonModule} from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-  } from '@angular/material/dialog';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {provideNativeDateAdapter} from '@angular/material/core';
+} from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { RouterOutlet, RouterLink } from "@angular/router";
+import { DataHandlerService } from './service/data-handler.service';
 
 @NgModule({
-    imports:[ 
+    imports: [
         FormsModule,
-        MatTableModule, 
+        MatTableModule,
         CommonModule,
         MatFormFieldModule,
         MatInputModule,
@@ -33,20 +37,22 @@ import {provideNativeDateAdapter} from '@angular/material/core';
         MatGridListModule,
         MatSelectModule,
         MatDatepickerModule,
+        DatePipe,
+        RouterOutlet,
+        RouterLink,
     ],
-    declarations:[ 
+    declarations: [
         TableRowBindingComponent,
-        DialogOverviewComponent,
-        DialogOverviewDialog
+        FormEditReminderComponent
     ],
-    bootstrap:    [  ],
-    exports:[
-        TableRowBindingComponent, 
-        DialogOverviewComponent,
-        DialogOverviewDialog
+    bootstrap: [],
+    exports: [
+        TableRowBindingComponent,
+        FormEditReminderComponent
     ],
     providers: [
-        provideNativeDateAdapter()
+        provideNativeDateAdapter(),
+        DataHandlerService
     ]
 })
 export class AppModule { }

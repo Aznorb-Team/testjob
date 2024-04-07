@@ -1,39 +1,36 @@
-import {Component, Inject} from '@angular/core';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogContent
-} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { IReminder } from '../../models/reminder';
 import { IStatus } from '../../models/status';
-import { reminder as reminder_data} from '../../data/reminder';
-import { status as status_data } from '../../data/status'; 
-import { DialogOverviewComponent } from '../dialog-overview/dialog-overview.component';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { DataHandlerService } from '../../service/data-handler.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-table-row-binding',
   templateUrl: './table-row-binding.component.html',
   styleUrl: './table-row-binding.component.css'
 })
-export class TableRowBindingComponent {
+export class TableRowBindingComponent implements OnInit {
   displayedColumns: string[] = ['status', 'short_description', 'data_created', 'data_completed'];
   displayedColumnsStatus: string[] = ['id', 'title'];
-  dataSource: IReminder[] = reminder_data;
-  dataSourceStatus: IStatus[] = status_data;
+  dataSource: IReminder[];
+  dataSourceStatus: IStatus[];
   clickedRows = new Set<IReminder>();
   clickedRowsStatus = new Set<IStatus>();
 
-  openDialog(id:string){
-    console.log(id);
+  constructor(private dataHandler: DataHandlerService, private router: Router) {
+
   }
 
-  // dataSource = ELEMENT_DATA;
-  //clickedRows = new Set<PeriodicElement>();
+  ngOnInit(): void {
+    this.dataHandler.reminderSubject.subscribe(reminders => this.dataSource = reminders);
+    this.dataHandler.fillReminder();
+    this.dataSourceStatus = this.dataHandler.getStatus();
+  }
+
+  editReminder(id: number) {
+    this.router.navigate(
+      ["reminder/", id]
+    );
+  }
 }
 
